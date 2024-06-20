@@ -1,10 +1,12 @@
 import useChatScroll from "../../hooks/useChatScroll";
 import useGetMessages from "../../hooks/useGetMessages";
+import useListenMessages from "../../hooks/useListenMessages";
 import MessageSkeleton from "../skeletons/MessageSkeleton";
 import Message from "./Message";
 
 const Messages = () => {
   const { loading, messages } = useGetMessages();
+  useListenMessages()
   const ref = useChatScroll(messages) as React.MutableRefObject<HTMLDivElement>;
   return (
     <div className='px-4 flex-1 overflow-auto' ref={ref}>
