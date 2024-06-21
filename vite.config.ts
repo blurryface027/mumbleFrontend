@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "mumblebackend-production.up.railway.app",
+        target: "https://mumblebackend-production.up.railway.app/",
       },
     },
   },
