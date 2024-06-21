@@ -34,14 +34,19 @@ export const AuthContextProvider = ({children}:{children:ReactNode})=>{
       try{
         const res = await fetch("/api/auth/me")
         const data = await res.json();
+        console.log(data)
         if(!res.ok){
-          throw new Error(data.error)
+          if (res.status !== 401) {
+            throw new Error(data.error || "Failed to fetch user.");
+          }
         }
         setAuthUser(data)
       }catch(error:any){
-        console.error(error.message)
-        toast.error(error.message)
-      }finally{
+         if (error.message === "Unexpected response format.") {
+          console.error("Received non-JSON response from server.");
+        } else {
+          toast.error(error.message);
+        }      }finally{
         setIsLoading(false)
       }
     }
