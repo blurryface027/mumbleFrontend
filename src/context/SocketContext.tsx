@@ -30,7 +30,7 @@ export const useSocketContext = (): ISocketContext => {
 };
 
 // Determine WebSocket URL based on environment
-const wsURL = "https://mumblebackend-production.up.railway.app/";
+const wsURL = "https://mumblebackend-production.up.railway.app";
 const SocketContextProvider = ({ children }: { children: ReactNode }) => {
   const [onlineUsers, setOnlineUsers] = useState<string[]>([]);
   const { authUser, isLoading } = useAuthContext();
