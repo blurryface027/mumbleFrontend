@@ -8,7 +8,8 @@ export default defineConfig({
     proxy: {
       "/api": {
         target: "https://mumblebackend-production.up.railway.app",
-        secure: false, 
+        changeOrigin:true,
+        secure: true, 
       },
     },
   },
